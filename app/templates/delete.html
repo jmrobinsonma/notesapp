@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+        <a href="{{ url_for('input') }}">
+          <p>Note Deleted</p>
+        </a>
+  </div>
+</div>
+<div>
+  <h2></h2>
+</div>
+    <div>
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <p>{{ result['id'] }}   {{ result['note'] }}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  <hr>
+    <a href="{{ url_for('notes') }}">Home</a>
+    </div>
+{% endblock content %}

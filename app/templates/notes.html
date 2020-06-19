@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+	<div class="row">
+    <a class="btn btn-default" href="{{ url_for('create_note') }}">New Note</a>
+  </div>
+  <hr>
+</div>
+<div>
+</div>
+<div>
+  {% for result in results %}
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="container">
+          <h3>{{ result.note }}</h3>
+        </div>
+      </div>
+    </div>
+  <a href="{{ url_for('edit_note', id=result.id) }}">edit</a>
+  <a href="{{ url_for('delete_note', id=result.id) }}">delete</a>
+  </article>
+  <hr>
+      {% endfor %}
+</div>
+<div class="border-bottom">
+  <a href="{{ url_for('logout') }}">logout</a>
+</div>
+{% endblock content %}
