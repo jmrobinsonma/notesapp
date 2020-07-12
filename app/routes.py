@@ -5,12 +5,20 @@ from app.forms import NoteForm, RegistrationForm, LoginForm
 from app.models import Notes, User
 from flask_login import login_user, current_user, logout_user, login_required
 
+date = datetime.now().strftime("%A %B %d, %Y")
+
 @app.route("/", methods=['GET','POST'])
 @login_required
 def notes():
-	date = datetime.now()
 	results = Notes.query.all()
-	return render_template('notes.html', results=results, title='Notes', legend='Notes', date=date.strftime("%A %B %d, %Y"))
+	note_button = True
+	return render_template(
+		'notes.html', 
+		results=results, 
+		title='Notes', 
+		legend='Notes', 
+		date=date
+	)
 
 
 @app.route('/notes/new', methods=['GET','POST'])
@@ -20,10 +28,15 @@ def create_note():
 		note = Notes(note=form.note.data)
 		db.session.add(note)
 		db.session.commit()
-		flash('New note added', 'success')
 		return redirect(url_for('notes'))
-	return render_template('create_note.html', title='New Note',
-						   form=form, legend='New Note')
+	elif request.method == 'GET':
+		return render_template(
+			'create_note.html', 
+			title='New Note',
+			form=form, 
+			legend='New Note',
+			date=date
+		)
 
 
 @app.route("/notes/<int:id>/delete", methods=['GET','POST'])
@@ -31,7 +44,6 @@ def delete_note(id):
 	note = Notes.query.get_or_404(id)
 	db.session.delete(note)
 	db.session.commit()
-	flash('Note deleted', 'success')
 	return redirect(url_for('notes'))
 
 
@@ -42,12 +54,16 @@ def edit_note(id):
 	if form.validate_on_submit():
 		note.note = form.note.data
 		db.session.commit()
-		flash('Note updated', 'success')
 		return redirect(url_for('notes'))
 	elif request.method == 'GET':
 		form.note.data = note.note
-	return render_template('create_note.html', title='Edit Note',
-						   form=form, legend='Edit Note')
+	return render_template(
+		'create_note.html', 
+		title='Edit Note',
+		form=form, 
+		legend='Edit Note',
+		date=date
+	)
 
 
 @app.route("/login", methods=['GET','POST'])
