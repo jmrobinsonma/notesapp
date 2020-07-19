@@ -1,3 +1,11 @@
+# V6
+
+# address browser back button issue where when logged out it is possible to use
+# the back button and have full access to any previous instance of live forms.
+
+# add confirm delete note modal
+
+
 from datetime import datetime
 from flask import render_template, url_for, redirect, request, flash
 from app import app, db, bcrypt
@@ -20,7 +28,7 @@ def notes():
 		date=date
 	)
 
-
+@login_required
 @app.route('/notes/new', methods=['GET','POST'])
 def create_note():
 	form = NoteForm()
@@ -38,7 +46,7 @@ def create_note():
 			date=date
 		)
 
-
+@login_required
 @app.route("/notes/<int:id>/delete", methods=['GET','POST'])
 def delete_note(id):
 	note = Notes.query.get_or_404(id)
@@ -46,7 +54,7 @@ def delete_note(id):
 	db.session.commit()
 	return redirect(url_for('notes'))
 
-
+@login_required
 @app.route("/notes/<int:id>/edit", methods=['GET', 'POST'])
 def edit_note(id):
 	note = Notes.query.get_or_404(id)
