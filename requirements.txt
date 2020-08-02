@@ -25,7 +25,7 @@ Flask-API==2.0
 flask-marshmallow==0.13.0
 Flask-RESTful==0.3.8
 Flask-SQLAlchemy==2.4.3
-httplib2==0.14.0
+httplib2==0.18.0
 idna==2.8
 ipykernel==5.3.0
 ipython==7.16.1
