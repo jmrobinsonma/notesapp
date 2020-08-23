@@ -9,11 +9,12 @@
     <h4>{{ date }}</h4>
   </div>
 </div>
+<legend style="text-align: center;">{{ legend }}</legend>
+
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend style="text-align: center;">{{ legend }}</legend>
             <div class="form-group">
                 {{ form.note.label(class="form-control-label") }}
                 {% if form.note.errors %}
@@ -29,8 +30,13 @@
             </div>
         </fieldset>
         <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
-            <a class="btn btn-default" href="{{ url_for('notes') }}">Home</a>
+            <a class="btn" href="{{ url_for('notes') }}">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-left-short" fill="black" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 0 1 0 .708L5.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+                  <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h6.5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </a>
+            {{ form.submit(class="btn btn-link",style="color: black") }}
         </div>
     </form>
 </div>
