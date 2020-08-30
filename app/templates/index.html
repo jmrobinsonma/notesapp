@@ -11,6 +11,7 @@
 
   <script src="https://use.fontawesome.com/43df1b7b10.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/input/bootstrap/css/bootstrap.min.css" />
+<!--
     <style>
     body {
       background-image: url('/static/images/sailboat.jpeg');
@@ -19,12 +20,13 @@
       background-size: cover;
     }
     </style>
+-->
 </head>
-  <body>
-    <a class="weatherwidget-io" href="https://forecast7.com/en/42d26n72d50/01033/?unit=us" data-label_1="GRANBY" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-days="5" data-theme="weather_one" >GRANBY WEATHER</a>
-    <script>
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-    </script>
+  <body style="background-color: black">
+    <a class="weatherwidget-io" href="https://forecast7.com/en/42d26n72d50/01033/?unit=us" data-label_1="GRANBY" data-label_2="WEATHER" data-font="Ubuntu" data-icons="Climacons Animated" data-days="5" data-theme="dark" >GRANBY WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
     {% block content %}{% endblock %}
   </body>
 </html>
