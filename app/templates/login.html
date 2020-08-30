@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block content %}
-<div>     
+<div style="color: white">     
  {% with messages = get_flashed_messages() %}
    {% if messages %}
      <ul class=flashes>
@@ -50,7 +50,7 @@
 				-->
 			</fieldset>
 			<div class="form-group">
-				{{ form.submit(class="btn-outline-info") }}
+				{{ form.submit(class="btn btn-link",style="color: #2E2E2E") }}
 			</div>
 		</form>
 	</div>
