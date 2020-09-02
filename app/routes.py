@@ -1,18 +1,16 @@
-# V6
-
-# address browser back button issue where when logged out it is possible to use
-# the back button and have full access to any previous instance of live forms.
-
-# add confirm delete note modal
+# V8
+# add modal to confirm delete note 
 
 from datetime import datetime
 from flask import render_template, url_for, redirect, request, flash
-from app import app, db, bcrypt
+from app import app, db, bcrypt, limiter
 from app.forms import NoteForm, RegistrationForm, LoginForm
 from app.models import Notes, User
 from flask_login import login_user, current_user, logout_user, login_required
 
+
 date = datetime.now().strftime("%A %B %d, %Y")
+
 
 @app.route("/", methods=['GET','POST'])
 @login_required
@@ -29,6 +27,7 @@ def notes():
 
 @app.route('/notes/new', methods=['GET','POST'])
 @login_required
+@limiter.limit("20/day;5/minute")
 def create_note():
 	form = NoteForm()
 	if form.validate_on_submit():
@@ -55,6 +54,7 @@ def delete_note(id):
 
 @app.route("/notes/<int:id>/edit", methods=['GET', 'POST'])
 @login_required
+@limiter.limit("20/day;5/minute")
 def edit_note(id):
 	note = Notes.query.get_or_404(id)
 	form = NoteForm()
