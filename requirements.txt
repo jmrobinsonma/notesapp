@@ -22,6 +22,10 @@ email-validator==1.1.1
 Flask==1.1.2
 Flask-Bcrypt==0.7.1
 Flask-Cors==3.0.8
+<<<<<<< HEAD
+=======
+Flask-Limiter==1.4
+>>>>>>> 986e4997e3ee0276684c1dabdd4857ddb4c1f3ff
 Flask-Login==0.5.0
 Flask-SQLAlchemy==2.4.3
 Flask-WTF==0.14.3
@@ -32,6 +36,10 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 jmespath==0.10.0
 jsonschema==3.2.0
+<<<<<<< HEAD
+=======
+limits==1.5.1
+>>>>>>> 986e4997e3ee0276684c1dabdd4857ddb4c1f3ff
 MarkupSafe==1.1.1
 oauthlib==3.0.1
 paramiko==2.7.1
