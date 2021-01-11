@@ -3,3 +3,4 @@ Dockerfile
 .env
 __pycache__
 notes.db
+/scripts
