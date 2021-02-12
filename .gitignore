@@ -3,5 +3,4 @@ Dockerfile
 .dockerignore
 .env
 __pycache__
-notes.db
 /scripts
